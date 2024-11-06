@@ -14,5 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
+    - name: Docker Login
+      run: docker login ghcr.io --username andygruening --password ${{ secrets.ACCESS_KEY }}
+    - name: Build Unreal Project
       run: docker build . --file Dockerfile --tag sequence-unreal:$(date +%s)
