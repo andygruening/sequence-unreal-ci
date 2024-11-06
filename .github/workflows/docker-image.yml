@@ -7,10 +7,14 @@ on:
     branches: [ "master" ]
 jobs:
   build:
-    runs-on: macos-latest-large
+    runs-on: ubuntu-latest-large
     steps:
     - name: Check out Repository
       uses: actions/checkout@v4
+    - name: Setup Docker
+      run: |
+        brew install docker
+        colima start
     - name: Docker Login
       env:
           ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
