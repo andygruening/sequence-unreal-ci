@@ -5,13 +5,9 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-
 jobs:
-
   build:
-
-    runs-on: ubuntu-latest
-
+    runs-on: macos-latest-large
     steps:
     - name: Check out Repository
       uses: actions/checkout@v4
