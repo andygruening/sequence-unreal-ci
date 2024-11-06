@@ -13,11 +13,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out repository
+    - name: Check out Repository
       uses: actions/checkout@v4
     - name: Docker Login
       env:
           ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
       run: docker login ghcr.io --username andygruening --password $ACCESS_KEY
+    - name: Pull UnrealEngine Image
+      run: docker pull ghcr.io/epicgames/unreal-engine:dev-slim-5.4.3
     - name: Build Unreal Project
-      run: docker build . --file Dockerfile --tag sequence-unreal:$(date +%s)
+      run: docker build . --file Dockerfile --tag sequence-unreal
