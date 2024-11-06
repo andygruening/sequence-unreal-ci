@@ -21,6 +21,9 @@ jobs:
           ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
       run: docker login ghcr.io --username andygruening --password $ACCESS_KEY
     - name: Pull UnrealEngine Image
+      uses: actions/cache@v4
       run: docker pull ghcr.io/epicgames/unreal-engine:dev-slim-5.4.3
     - name: Build Unreal Project
-      run: docker build . --file Dockerfile --tag sequence-unreal
+      run: | 
+        docker build . --file Dockerfile --tag sequence-unreal
+        docker run sequence-unreal
