@@ -11,6 +11,13 @@ jobs:
     steps:
     - name: Check out Repository
       uses: actions/checkout@v4
+    - name: Cache Docker Layers
+      uses: actions/cache@v3
+      with:
+        path: /tmp/.docker-cache
+        key: ${{ runner.os }}-docker-${{ hashFiles('**/Dockerfile') }}
+        restore-keys: |
+          ${{ runner.os }}-docker-
     - name: Setup Docker
       run: |
         brew install colima
@@ -20,8 +27,14 @@ jobs:
       env:
           ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
       run: docker login ghcr.io --username andygruening --password $ACCESS_KEY
+    - name: Load Docker Cache
+      run: |
+        mkdir -p /tmp/.docker-cache
+        docker load -i /tmp/.docker-cache/layers.tar || true
     - name: Pull UnrealEngine Image
-      run: docker pull ghcr.io/epicgames/unreal-engine:dev-slim-5.4.3
+      run: | 
+        docker pull ghcr.io/epicgames/unreal-engine:dev-slim-5.4.3
+        docker save ghcr.io/epicgames/unreal-engine:dev-slim-5.4.3 -o /tmp/.docker-cache/layers.tar
     - name: Build Unreal Project
       run: | 
         docker build . --file Dockerfile --tag sequence-unreal
