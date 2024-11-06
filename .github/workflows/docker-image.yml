@@ -13,8 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Check out repository
+      uses: actions/checkout@v4
     - name: Docker Login
+      env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
       run: docker login ghcr.io --username andygruening --password ${{ secrets.ACCESS_KEY }}
     - name: Build Unreal Project
       run: docker build . --file Dockerfile --tag sequence-unreal:$(date +%s)
