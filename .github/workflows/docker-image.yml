@@ -13,7 +13,9 @@ jobs:
       uses: actions/checkout@v4
     - name: Setup Docker
       run: |
+        brew install colima
         brew install docker
+        colima start
     - name: Docker Login
       env:
           ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
