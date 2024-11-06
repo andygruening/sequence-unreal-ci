@@ -14,7 +14,6 @@ jobs:
     - name: Setup Docker
       run: |
         brew install docker
-        colima start
     - name: Docker Login
       env:
           ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
