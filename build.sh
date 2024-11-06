@@ -1,4 +1,6 @@
-sh /home/ue4/UnrealEngine/Engine/Build/BatchFiles/RunUAT.sh \
+#!/bin/sh
+
+/home/ue4/UnrealEngine/Engine/Build/BatchFiles/RunUAT.sh \
 	BuildCookRun \
 	-utf8output \
 	-platform=Linux \

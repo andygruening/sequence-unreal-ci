@@ -4,6 +4,7 @@ WORKDIR /
 
 COPY . /
 
-RUN chmod +x /build.sh
+USER root
+RUN chmod +x ./build.sh
 
 CMD ["./build.sh"]
