@@ -7,7 +7,7 @@ on:
     branches: [ "master" ]
 jobs:
   build:
-    runs-on: ubuntu-latest-large
+    runs-on: macos-latest-large
     steps:
     - name: Check out Repository
       uses: actions/checkout@v4
