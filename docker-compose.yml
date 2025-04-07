@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  unreal-builder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/SequencePlugin
+    command: ./SequencePlugin/build.sh
