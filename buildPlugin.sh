@@ -7,4 +7,6 @@
   -nocompile \
   -nocompileuat
 
+cat "/root/Library/Logs/Unreal Engine/LocalBuildLogs/UBA-UnrealEditor-Linux-Development"
+
 touch ./shared/flag
