@@ -12,4 +12,4 @@ services:
       retries: 5
     volumes:
       - .:/SequencePlugin
-    command: ./SequencePlugin/build.sh
+    command: ./SequencePlugin/buildPlugin.sh

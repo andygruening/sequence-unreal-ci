@@ -5,7 +5,7 @@ WORKDIR /
 COPY . /SequencePlugin/
 
 USER root
-RUN chmod +x ./SequencePlugin/build.sh
+RUN chmod +x ./SequencePlugin/buildPlugin.sh
 RUN chmod +x ./SequencePlugin/healthcheck.sh
 
-CMD ["./SequencePlugin/build.sh"]
+CMD ["./SequencePlugin/buildPlugin.sh"]
