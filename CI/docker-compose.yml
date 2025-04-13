@@ -11,8 +11,8 @@ services:
       timeout: 5s
       retries: 5
     volumes:
-      - .:/SequencePlugin
-    command: ./SequencePlugin/buildPlugin.sh
+      - .:/
+    command: ./buildPlugin.sh
     deploy:
       resources:
         limits:
